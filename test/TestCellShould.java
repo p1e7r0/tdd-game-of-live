@@ -57,4 +57,13 @@ class TestCellShould {
         assertEquals(ALIVE, nextState);
     }
 
+    @Test
+    void becomeAliveIfNeighboursAreThree() {
+        Cell cell = new Cell(DEAD);
+
+        CellState nextState = cell.getNextState(EXACTLY_THREE_NEIGHBOURS);
+
+        assertEquals(ALIVE, nextState);
+    }
+
 }
