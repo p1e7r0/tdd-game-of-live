@@ -36,8 +36,9 @@ public class Cell {
     }
 
     public CellState getNextState(NeighboursState neighboursState) {
-        if(state == ALIVE) return neighboursCellStateFromAlive.getOrDefault(neighboursState, state);
-        if(state == DEAD) return neighboursCellStateFromDead.getOrDefault(neighboursState, state);
-        return state;
+        return switch (state){
+            case ALIVE -> neighboursCellStateFromAlive.get(neighboursState);
+            case DEAD -> neighboursCellStateFromDead.get(neighboursState);
+        };
     }
 }
