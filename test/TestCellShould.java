@@ -26,7 +26,7 @@ class TestCellShould {
     void returnThePassedCellState(CellState state) {
         Cell cell = new Cell(state);
 
-        assertEquals(state, cell.getState());
+        assertEquals(state, cell.state());
     }
 
     @Test
