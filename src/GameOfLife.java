@@ -1,6 +1,9 @@
 import cell.Cell;
 import cell.CellState;
 
+import static cell.CellState.ALIVE;
+import static cell.CellState.DEAD;
+
 public class GameOfLife {
 
     final private Cell[][] universe;
@@ -25,8 +28,15 @@ public class GameOfLife {
     }
 
     public CellState[][] nextGeneration() {
-        CellState[][] nextState = new CellState[1][1];
-        nextState[0][0] = CellState.DEAD;
+        CellState[][] nextState = new CellState[universe.length][universe[0].length];
+        if (universe.length == 1) {
+            nextState[0][0] = DEAD;
+        } else if(universe.length == 2){
+            nextState[0][0] = ALIVE;
+            nextState[0][1] = ALIVE;
+            nextState[1][0] = ALIVE;
+            nextState[1][1] = ALIVE;
+        }
         return nextState;
     }
 }

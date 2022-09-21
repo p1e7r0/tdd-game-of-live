@@ -30,6 +30,24 @@ class TestGameOfLifeShould {
                 { D },
         };
         GameOfLife gameOfLife = new GameOfLife(firstGeneration);
+
+        CellState[][] nextGeneration = gameOfLife.nextGeneration();
+
+        assertArrayEquals(expectedGeneration, nextGeneration);
+    }
+
+    @Test
+    void bringLifeInToTheUniverse() {
+        CellState[][] firstGeneration = {
+                { D, A },
+                { A, A },
+        };
+        CellState[][] expectedGeneration = {
+                { A, A },
+                { A, A },
+        };
+        GameOfLife gameOfLife = new GameOfLife(firstGeneration);
+
         CellState[][] nextGeneration = gameOfLife.nextGeneration();
 
         assertArrayEquals(expectedGeneration, nextGeneration);
