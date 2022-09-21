@@ -4,7 +4,7 @@ import static cell.CellState.ALIVE;
 
 public class Cell {
 
-    private CellState state;
+    final private CellState state;
 
     public Cell(CellState state) {
         this.state = state;
@@ -12,5 +12,9 @@ public class Cell {
 
     public boolean isAlive() {
         return state == ALIVE;
+    }
+
+    public CellState getState() {
+        return state;
     }
 }
