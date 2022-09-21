@@ -1,42 +1,28 @@
 import cell.Cell;
 import cell.CellState;
 import neighbours.Neighbours;
+import tool.Matrix;
 
 public class GameOfLife {
 
     final private Cell[][] universe;
 
     public GameOfLife(CellState[][] seed) {
+        assert seed.length >= 1 && seed[0].length >= 1;
         this.universe = new Cell[seed.length][seed[0].length];
-        for(int row = 0; row < seed.length; row++) {
-            for(int column = 0; column < seed[row].length; column++) {
-                this.universe[row][column] = new Cell(seed[row][column]);
-            }
-        }
+        Matrix.traverse(seed, (row, column) -> this.universe[row][column] = new Cell(seed[row][column]));
     }
 
     public CellState[][] getState() {
         CellState[][] actualState = new CellState[this.universe.length][this.universe[0].length];
-        for(int row = 0; row < this.universe.length; row++) {
-            for(int column = 0; column < this.universe[row].length; column++) {
-                actualState[row][column] =  this.universe[row][column].state();
-            }
-        }
+        Matrix.traverse(universe, (row, column) -> actualState[row][column] = universe[row][column].state());
         return actualState;
     }
 
     public CellState[][] nextGeneration() {
         CellState[][] nextGeneration = new CellState[this.universe.length][this.universe[0].length];
-        for (int row = 0; row < this.universe.length; row++) {
-            for (int column = 0; column < this.universe[row].length; column++) {
-                nextGeneration[row][column] = this.universe[row][column].getNextState(getNeighbours(row, column));
-            }
-        }
-        for (int row = 0; row < this.universe.length; row++) {
-            for (int column = 0; column < this.universe[row].length; column++) {
-                this.universe[row][column] = new Cell(nextGeneration[row][column]);
-            }
-        }
+        Matrix.traverse(universe, (row, column) -> nextGeneration[row][column] = universe[row][column].getNextState(getNeighbours(row, column)));
+        Matrix.traverse(nextGeneration, (row, column) -> this.universe[row][column] = new Cell(nextGeneration[row][column]));
         return nextGeneration;
     }
 
