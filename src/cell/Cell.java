@@ -4,6 +4,8 @@ import neighbours.NeighboursState;
 
 import static cell.CellState.ALIVE;
 import static cell.CellState.DEAD;
+import static neighbours.NeighboursState.EXACTLY_TWO_NEIGHBOURS;
+import static neighbours.NeighboursState.FEWER_THAN_TWO_NEIGHBOURS;
 
 public class Cell {
 
@@ -22,6 +24,8 @@ public class Cell {
     }
 
     public CellState getNextState(NeighboursState neighboursState) {
+        if(state == ALIVE && neighboursState == FEWER_THAN_TWO_NEIGHBOURS) return DEAD;
+        if(state == ALIVE && neighboursState == EXACTLY_TWO_NEIGHBOURS) return ALIVE;
         return DEAD;
     }
 }
