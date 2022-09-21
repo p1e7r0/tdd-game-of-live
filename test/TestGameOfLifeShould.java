@@ -84,8 +84,23 @@ class TestGameOfLifeShould {
         };
         GameOfLife gameOfLife = new GameOfLife(firstGeneration);
 
-        CellState[][] nextGeneration = gameOfLife.nextGeneration();
+        gameOfLife.nextGeneration();
 
-        assertArrayEquals(expectedGeneration, nextGeneration);
+        assertArrayEquals(expectedGeneration, gameOfLife.getState());
+    }
+
+    @Test
+    void alternateTheCenterColumToCenterRow2Step() {
+        CellState[][] firstGeneration = {
+                { D, A, D },
+                { D, A, D },
+                { D, A, D },
+        };
+        GameOfLife gameOfLife = new GameOfLife(firstGeneration);
+
+        gameOfLife.nextGeneration();
+        gameOfLife.nextGeneration();
+
+        assertArrayEquals(firstGeneration, gameOfLife.getState());
     }
 }

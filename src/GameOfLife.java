@@ -16,7 +16,7 @@ public class GameOfLife {
     }
 
     public CellState[][] getState() {
-        CellState[][] actualState = new CellState[universe.length][universe[0].length];
+        CellState[][] actualState = new CellState[this.universe.length][this.universe[0].length];
         for(int row = 0; row < this.universe.length; row++) {
             for(int column = 0; column < this.universe[row].length; column++) {
                 actualState[row][column] =  this.universe[row][column].state();
@@ -26,10 +26,15 @@ public class GameOfLife {
     }
 
     public CellState[][] nextGeneration() {
-        CellState[][] nextGeneration = new CellState[universe.length][universe[0].length];
+        CellState[][] nextGeneration = new CellState[this.universe.length][this.universe[0].length];
         for (int row = 0; row < this.universe.length; row++) {
             for (int column = 0; column < this.universe[row].length; column++) {
-                nextGeneration[row][column] = universe[row][column].getNextState(getNeighbours(row, column));
+                nextGeneration[row][column] = this.universe[row][column].getNextState(getNeighbours(row, column));
+            }
+        }
+        for (int row = 0; row < this.universe.length; row++) {
+            for (int column = 0; column < this.universe[row].length; column++) {
+                this.universe[row][column] = new Cell(nextGeneration[row][column]);
             }
         }
         return nextGeneration;
