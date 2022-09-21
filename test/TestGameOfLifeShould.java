@@ -20,4 +20,18 @@ class TestGameOfLifeShould {
 
         assertArrayEquals(firstGeneration, gameOfLife.getState());
     }
+
+    @Test
+    void annihilateTheUniverseMadeOfOneLivingCell() {
+        CellState[][] firstGeneration = {
+                { A },
+        };
+        CellState[][] expectedGeneration = {
+                { D },
+        };
+        GameOfLife gameOfLife = new GameOfLife(firstGeneration);
+        CellState[][] nextGeneration = gameOfLife.nextGeneration();
+
+        assertArrayEquals(expectedGeneration, nextGeneration);
+    }
 }

@@ -23,4 +23,10 @@ public class GameOfLife {
         }
         return actualState;
     }
+
+    public CellState[][] nextGeneration() {
+        CellState[][] nextState = new CellState[1][1];
+        nextState[0][0] = CellState.DEAD;
+        return nextState;
+    }
 }
