@@ -1,6 +1,9 @@
 package cell;
 
+import neighbours.NeighboursState;
+
 import static cell.CellState.ALIVE;
+import static cell.CellState.DEAD;
 
 public class Cell {
 
@@ -16,5 +19,9 @@ public class Cell {
 
     public CellState getState() {
         return state;
+    }
+
+    public CellState getNextState(NeighboursState neighboursState) {
+        return DEAD;
     }
 }
