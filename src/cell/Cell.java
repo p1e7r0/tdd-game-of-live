@@ -1,11 +1,16 @@
 package cell;
 
-public class Cell {
-    public Cell(CellState state) {
+import static cell.CellState.ALIVE;
 
+public class Cell {
+
+    private CellState state;
+
+    public Cell(CellState state) {
+        this.state = state;
     }
 
     public boolean isAlive() {
-        return true;
+        return state == ALIVE;
     }
 }
