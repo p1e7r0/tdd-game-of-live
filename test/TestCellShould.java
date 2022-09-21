@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
 import static neighbours.NeighboursState.*;
-import static neighbours.NeighboursState.EXACTLY_THREE_NEIGHBOURS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -64,6 +63,15 @@ class TestCellShould {
         CellState nextState = cell.getNextState(EXACTLY_THREE_NEIGHBOURS);
 
         assertEquals(ALIVE, nextState);
+    }
+
+    @Test
+    void dieIfNeighboursAreMoreThanTre() {
+        Cell cell = new Cell(ALIVE);
+
+        CellState nextState = cell.getNextState(MORE_THAN_THREE_NEIGHBOURS);
+
+        assertEquals(DEAD, nextState);
     }
 
 }

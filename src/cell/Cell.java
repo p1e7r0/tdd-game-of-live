@@ -27,6 +27,7 @@ public class Cell {
         if(state == ALIVE && neighboursState == EXACTLY_TWO_NEIGHBOURS) return ALIVE;
         if(state == ALIVE && neighboursState == EXACTLY_THREE_NEIGHBOURS) return ALIVE;
         if(state == DEAD && neighboursState == EXACTLY_THREE_NEIGHBOURS) return ALIVE;
+        if(state == ALIVE && neighboursState == MORE_THAN_THREE_NEIGHBOURS) return DEAD;
         return DEAD;
     }
 }
