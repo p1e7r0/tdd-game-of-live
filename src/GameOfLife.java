@@ -1,8 +1,6 @@
 import cell.Cell;
 import cell.CellState;
-
-import static cell.CellState.ALIVE;
-import static cell.CellState.DEAD;
+import neighbours.Neighbours;
 
 public class GameOfLife {
 
@@ -28,15 +26,26 @@ public class GameOfLife {
     }
 
     public CellState[][] nextGeneration() {
-        CellState[][] nextState = new CellState[universe.length][universe[0].length];
-        if (universe.length == 1) {
-            nextState[0][0] = DEAD;
-        } else if(universe.length == 2){
-            nextState[0][0] = ALIVE;
-            nextState[0][1] = ALIVE;
-            nextState[1][0] = ALIVE;
-            nextState[1][1] = ALIVE;
+        CellState[][] nextGeneration = new CellState[universe.length][universe[0].length];
+        for (int row = 0; row < this.universe.length; row++) {
+            for (int column = 0; column < this.universe[row].length; column++) {
+                nextGeneration[row][column] = universe[row][column].getNextState(getNeighbours(row, column));
+            }
         }
-        return nextState;
+        return nextGeneration;
+    }
+
+    private Neighbours getNeighbours(int row, int column) {
+        int neighboursNumber = 0;
+        for (int i = row - 1; i <= row + 1; i++) {
+            for (int j = column - 1; j <= column + 1; j++) {
+                if (i == row && j == column) continue;
+                if (i < 0 || i >= universe.length || j < 0 || j >= universe[row].length) continue;
+                if (universe[i][j].isAlive()) {
+                    neighboursNumber++;
+                }
+            }
+        }
+        return new Neighbours(neighboursNumber);
     }
 }
