@@ -1,5 +1,6 @@
 package cell;
 
+import neighbours.Neighbours;
 import neighbours.NeighboursState;
 
 import static cell.CellState.ALIVE;
@@ -22,5 +23,9 @@ public record Cell(CellState state) {
                 case EXACTLY_THREE_NEIGHBOURS -> ALIVE;
             };
         };
+    }
+
+    public CellState getNextState(Neighbours neighbours) {
+        return getNextState(neighbours.getState());
     }
 }

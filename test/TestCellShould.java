@@ -1,8 +1,10 @@
 
 import cell.Cell;
 import cell.CellState;
+import neighbours.Neighbours;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 
 import static neighbours.NeighboursState.*;
@@ -72,6 +74,35 @@ class TestCellShould {
         CellState nextState = cell.getNextState(MORE_THAN_THREE_NEIGHBOURS);
 
         assertEquals(DEAD, nextState);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "DEAD, 0, DEAD",
+            "DEAD, 1, DEAD",
+            "DEAD, 2, DEAD",
+            "DEAD, 3, ALIVE",
+            "DEAD, 4, DEAD",
+            "DEAD, 5, DEAD",
+            "DEAD, 6, DEAD",
+            "DEAD, 7, DEAD",
+            "DEAD, 8, DEAD",
+            "ALIVE, 0, DEAD",
+            "ALIVE, 1, DEAD",
+            "ALIVE, 2, ALIVE",
+            "ALIVE, 3, ALIVE",
+            "ALIVE, 4, DEAD",
+            "ALIVE, 5, DEAD",
+            "ALIVE, 6, DEAD",
+            "ALIVE, 7, DEAD",
+            "ALIVE, 8, DEAD",
+    })
+    void returnNextCellStateAccordingToTransformationsRules(CellState cellState, int neighboursNumber, CellState expectedCellState) {
+        Cell cell = new Cell(cellState);
+
+        CellState nextState = cell.getNextState(new Neighbours(neighboursNumber));
+
+        assertEquals(expectedCellState, nextState);
     }
 
 }
