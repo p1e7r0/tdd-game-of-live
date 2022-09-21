@@ -2,24 +2,10 @@ package cell;
 
 import neighbours.NeighboursState;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static cell.CellState.ALIVE;
 import static cell.CellState.DEAD;
-import static neighbours.NeighboursState.*;
 
 public class Cell {
-    private final Map<NeighboursState, CellState> neighboursCellStateFromAlive = new HashMap<>(){{
-        put(FEWER_THAN_TWO_NEIGHBOURS, DEAD);
-        put(EXACTLY_TWO_NEIGHBOURS, ALIVE);
-        put(EXACTLY_THREE_NEIGHBOURS, ALIVE);
-        put(MORE_THAN_THREE_NEIGHBOURS, DEAD);
-    }};
-
-    private final Map<NeighboursState, CellState> neighboursCellStateFromDead = new HashMap<>(){{
-        put(EXACTLY_THREE_NEIGHBOURS, ALIVE);
-    }};
 
     final private CellState state;
 
@@ -37,8 +23,14 @@ public class Cell {
 
     public CellState getNextState(NeighboursState neighboursState) {
         return switch (state){
-            case ALIVE -> neighboursCellStateFromAlive.get(neighboursState);
-            case DEAD -> neighboursCellStateFromDead.get(neighboursState);
+            case ALIVE -> switch (neighboursState) {
+                case FEWER_THAN_TWO_NEIGHBOURS, MORE_THAN_THREE_NEIGHBOURS -> DEAD;
+                case EXACTLY_TWO_NEIGHBOURS, EXACTLY_THREE_NEIGHBOURS -> ALIVE;
+            };
+            case DEAD -> switch (neighboursState) {
+                case FEWER_THAN_TWO_NEIGHBOURS, EXACTLY_TWO_NEIGHBOURS, MORE_THAN_THREE_NEIGHBOURS -> DEAD;
+                case EXACTLY_THREE_NEIGHBOURS -> ALIVE;
+            };
         };
     }
 }
