@@ -24,23 +24,36 @@ public class Main {
         CellState D = DEAD;
 
         CellState[][] firstGeneration = {
-                { D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D },
-                { D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D },
-                { D, D, D, D, A, A, A, D, D, D, A, A, A, D, D, D, D },
-                { D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D },
-                { D, D, A, D, D, D, D, A, D, A, D, D, D, D, A, D, D },
-                { D, D, A, D, D, D, D, A, D, A, D, D, D, D, A, D, D },
-                { D, D, A, D, D, D, D, A, D, A, D, D, D, D, A, D, D },
-                { D, D, D, D, A, A, A, D, D, D, A, A, A, D, D, D, D },
-                { D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D },
-                { D, D, D, D, A, A, A, D, D, D, A, A, A, D, D, D, D },
-                { D, D, A, D, D, D, D, A, D, A, D, D, D, D, A, D, D },
-                { D, D, A, D, D, D, D, A, D, A, D, D, D, D, A, D, D },
-                { D, D, A, D, D, D, D, A, D, A, D, D, D, D, A, D, D },
-                { D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D },
-                { D, D, D, D, A, A, A, D, D, D, A, A, A, D, D, D, D },
-                { D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D },
-                { D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D },
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,A,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,A,D,A,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,A,A,D,D,D,D,D,D,A,A,D,D,D,D,D,D,D,D,D,D,D,D,A,A,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,A,D,D,D,A,D,D,D,D,A,A,D,D,D,D,D,D,D,D,D,D,D,D,A,A,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,A,A,D,D,D,D,D,D,D,D,A,D,D,D,D,D,A,D,D,D,A,A,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,A,A,D,D,D,D,D,D,D,D,A,D,D,D,A,D,A,A,D,D,D,D,A,D,A,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,A,D,D,D,D,D,A,D,D,D,D,D,D,D,A,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,A,D,D,D,A,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,A,A,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D},
+                {D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D,D}
         };
 
         printGeneration(firstGeneration);
@@ -52,7 +65,7 @@ public class Main {
             public void run() {
                 printGeneration(gameOfLife.nextGeneration());
             }
-        }, 500, 500);
+        }, 100, 100);
     }
 
 }
